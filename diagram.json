@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "author": "Ruchi",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "hcsr04_front",
+      "top": -120,
+      "left": -260,
+      "attrs": { "distance": "50" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "hcsr04_down",
+      "top": 140,
+      "left": -260,
+      "rotate": 90,
+      "attrs": { "distance": "10" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer1",
+      "top": -140,
+      "left": 260,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -40,
+      "left": 300,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -40,
+      "left": 340,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 100,
+      "left": 300,
+      "attrs": { "color": "blue" }
+    }
+  ],
+  "connections": [
+    ["uno:5V", "hcsr04_front:VCC", "red", ["v0"]],
+    ["uno:GND.1", "hcsr04_front:GND", "black", ["v0"]],
+    ["uno:9", "hcsr04_front:TRIG", "green", ["v0"]],
+    ["uno:10", "hcsr04_front:ECHO", "yellow", ["v0"]],
+
+    ["uno:5V", "hcsr04_down:VCC", "red", ["v0"]],
+    ["uno:GND.2", "hcsr04_down:GND", "black", ["v0"]],
+    ["uno:11", "hcsr04_down:TRIG", "green", ["v0"]],
+    ["uno:12", "hcsr04_down:ECHO", "yellow", ["v0"]],
+
+    ["uno:8", "buzzer1:1", "orange", ["v0"]],
+    ["buzzer1:2", "uno:GND.3", "black", ["v0"]],
+
+    ["uno:13", "led1:A", "orange", ["v0"]],
+    ["led1:C", "r1:1", "black", ["v0"]],
+    ["r1:2", "uno:GND.3", "black", ["v0"]],
+
+    ["uno:2", "btn1:1.l", "blue", ["v0"]],
+    ["btn1:2.l", "uno:GND.3", "black", ["v0"]]
+  ],
+  "dependencies": {}
+}
